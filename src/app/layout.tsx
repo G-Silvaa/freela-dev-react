@@ -13,11 +13,11 @@ const barlow = Barlow({
 
 export const metadata: Metadata = {
   title: {
-    default: "LIV — Painel administrativo",
-    template: "%s · LIV",
+    default: "Arctech — Painel administrativo",
+    template: "%s · Arctech",
   },
   description:
-    "Plataforma administrativa LIV: gestão de clientes, processos, contratos e finanças da assistência previdenciária.",
+    "Plataforma administrativa Arctech: gestão de clientes, processos, contratos e finanças da assistência previdenciária.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

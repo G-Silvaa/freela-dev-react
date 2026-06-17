@@ -104,7 +104,7 @@ export default function HomePage() {
   return (
     <div className="page-shell">
       <PageHeader
-        eyebrow={user ? `${getNivelLabel(user.nivel)} · ${user.nome.split(" ")[0]}` : "LIV"}
+        eyebrow={user ? `${getNivelLabel(user.nivel)} · ${user.nome.split(" ")[0]}` : "Arctech"}
         title="Painel previdenciário"
         description="Visão consolidada da operação: clientes, processos, contratos e fluxo financeiro num mesmo lugar."
         actions={visibleQuickLinks.map((item) => {

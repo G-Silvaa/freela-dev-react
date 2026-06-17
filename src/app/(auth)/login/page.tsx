@@ -155,7 +155,7 @@ export default function LoginPage() {
           <ShieldCheck className="size-5" />
         </div>
         <div>
-          <p className="eyebrow">LIV · Plataforma</p>
+          <p className="eyebrow">Arctech · Plataforma</p>
           <h1 className="font-display text-3xl text-primary leading-none">
             Entrar no painel
           </h1>

@@ -30,6 +30,30 @@ export interface RegisterPayload {
   nome: string;
   email: string;
   senha: string;
+  /** Código do plano escolhido na landing (normal, profissional, escritorio). */
+  planoCodigo?: string;
+}
+
+export interface Assinatura {
+  planoCodigo: string;
+  planoNome: string;
+  preco: number;
+  status: string;
+  statusLabel: string;
+  trialAte: string | null;
+  vencimento: string | null;
+  permiteAcesso: boolean;
+  diasRestantes: number | null;
+  maxUsuarios: number | null;
+  maxClientes: number | null;
+}
+
+export interface PlanoApi {
+  codigo: string;
+  nome: string;
+  preco: number;
+  maxUsuarios: number | null;
+  maxClientes: number | null;
 }
 
 export interface NivelUsuarioOption {
@@ -70,6 +94,7 @@ export const ROUTE_ACCESS: Record<NivelUsuario, string[]> = {
     "/modalidades",
     "/relatorios",
     "/usuarios",
+    "/assinatura",
   ],
   GESTOR: [
     "/home",
@@ -79,9 +104,10 @@ export const ROUTE_ACCESS: Record<NivelUsuario, string[]> = {
     "/financas",
     "/modalidades",
     "/relatorios",
+    "/assinatura",
   ],
-  OPERADOR: ["/home", "/clientes", "/processos", "/contratos", "/modalidades", "/relatorios"],
-  FINANCEIRO: ["/home", "/contratos", "/financas", "/modalidades", "/relatorios"],
+  OPERADOR: ["/home", "/clientes", "/processos", "/contratos", "/modalidades", "/relatorios", "/assinatura"],
+  FINANCEIRO: ["/home", "/contratos", "/financas", "/modalidades", "/relatorios", "/assinatura"],
   CONSULTA: [
     "/home",
     "/clientes",
@@ -90,6 +116,7 @@ export const ROUTE_ACCESS: Record<NivelUsuario, string[]> = {
     "/financas",
     "/modalidades",
     "/relatorios",
+    "/assinatura",
   ],
 };
 

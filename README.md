@@ -1,6 +1,6 @@
-# LIV ADM Front
+# Arctech ADM Front
 
-Frontend administrativo do LIV (assistência previdenciária), construído com Next.js 14 (App Router), TypeScript, Tailwind e shadcn/ui.
+Frontend administrativo do Arctech (assistência previdenciária), construído com Next.js 14 (App Router), TypeScript, Tailwind e shadcn/ui.
 
 Migrado do Angular 18 (`freela-dev-angular-bkp/`) preservando paridade de features e adotando a estrutura/design do `edital-360-front`.
 
@@ -44,7 +44,7 @@ npm start
 - `src/app` — App Router (route groups `(auth)` e `(private)`)
 - `src/components/ui` — primitivos shadcn/ui
 - `src/components/layout` — sidebar e header da área privada
-- `src/core/services` — clientes axios para a LIV API
+- `src/core/services` — clientes axios para a Arctech API
 - `src/core/types` — tipos de domínio (auth, cliente, processo, contrato, financeiro)
 - `src/core/consts` — constantes (modalidades, benefícios, status)
 - `src/hooks` — hooks compartilhados

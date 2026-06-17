@@ -12,6 +12,7 @@ import {
   Banknote,
   BarChart3,
   ShieldCheck,
+  CreditCard,
   LogOut,
   PanelLeft,
   X,
@@ -36,6 +37,7 @@ const NAV_ITEMS: NavigationItem[] = [
   { label: "Finanças", route: "/financas", icon: Banknote },
   { label: "Relatórios", route: "/relatorios", icon: BarChart3 },
   { label: "Usuários", route: "/usuarios", icon: ShieldCheck },
+  { label: "Assinatura", route: "/assinatura", icon: CreditCard },
 ];
 
 export function Sidenav() {
@@ -80,10 +82,10 @@ export function Sidenav() {
         <div className="flex items-center justify-between px-2">
           <div className="flex items-center gap-2">
             <div className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground text-sm font-semibold">
-              L
+              A
             </div>
             <div>
-              <p className="text-sm font-semibold text-text leading-none">LIV</p>
+              <p className="text-sm font-semibold text-text leading-none">Arctech</p>
               <p className="text-[0.7rem] text-muted-foreground">Painel</p>
             </div>
           </div>

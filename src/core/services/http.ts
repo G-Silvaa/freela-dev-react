@@ -62,6 +62,10 @@ api.interceptors.response.use(
         window.location.href = `/login?redirectTo=${redirect}`;
       }
     }
+    // 402 = assinatura inativa/vencida: leva para a tela de assinatura (gate).
+    if (status === 402 && isBrowser() && !window.location.pathname.startsWith("/assinatura")) {
+      window.location.href = "/assinatura";
+    }
     return Promise.reject(error);
   },
 );

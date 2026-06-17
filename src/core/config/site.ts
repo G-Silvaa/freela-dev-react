@@ -5,6 +5,6 @@ export const site = {
     process.env.API_URL ??
     process.env.NEXT_PUBLIC_API_URL ??
     "https://liv-api-demo.onrender.com/liv-api/",
-  name: "LIV",
-  fullName: "LIV — Assistência Previdenciária",
+  name: "Arctech",
+  fullName: "Arctech — Assistência Previdenciária",
 };

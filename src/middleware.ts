@@ -1,7 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { ACCESS_TOKEN_KEY } from "@/core/auth/storage-keys";
 
-const PUBLIC_PATHS = new Set(["/login", "/cadastro"]);
+// Páginas de autenticação: acessíveis sem login, mas redirecionam para /home
+// quando o usuário já está logado.
+const AUTH_PATHS = new Set(["/login", "/cadastro"]);
+
+// Páginas de marketing (landing/vendas): sempre acessíveis, com ou sem login.
+const MARKETING_PATHS = new Set(["/"]);
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -17,8 +22,13 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
+  // A landing pública fica liberada para todo mundo.
+  if (MARKETING_PATHS.has(pathname)) {
+    return NextResponse.next();
+  }
+
   const token = req.cookies.get(ACCESS_TOKEN_KEY)?.value;
-  const isPublic = PUBLIC_PATHS.has(pathname);
+  const isPublic = AUTH_PATHS.has(pathname);
 
   if (!token && !isPublic) {
     const url = req.nextUrl.clone();
