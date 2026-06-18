@@ -75,24 +75,24 @@ export function Sidenav() {
 
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-50 flex w-64 flex-col gap-4 border-r border-border bg-card px-3 py-5 transition-transform lg:translate-x-0",
+          "fixed inset-y-0 left-0 z-50 flex w-64 flex-col gap-4 border-r border-primary-strong bg-primary text-white px-3 py-5 transition-transform lg:translate-x-0",
           mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
         )}
       >
         <div className="flex items-center justify-between px-2">
           <div className="flex items-center gap-2">
-            <div className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground text-sm font-semibold">
+            <div className="grid h-8 w-8 place-items-center rounded-md bg-white/15 text-white text-sm font-semibold">
               A
             </div>
             <div>
-              <p className="text-sm font-semibold text-text leading-none">Arctech</p>
-              <p className="text-[0.7rem] text-muted-foreground">Painel</p>
+              <p className="text-sm font-semibold text-white leading-none">Arctech</p>
+              <p className="text-[0.7rem] text-white/60">Painel</p>
             </div>
           </div>
           <button
             type="button"
             onClick={() => setMobileOpen(false)}
-            className="rounded-md p-1 text-muted-foreground hover:text-text lg:hidden"
+            className="rounded-md p-1 text-white/70 hover:text-white lg:hidden"
             aria-label="Fechar menu"
           >
             <X className="size-4" />
@@ -113,8 +113,8 @@ export function Sidenav() {
                 className={cn(
                   "flex items-center gap-2.5 rounded-md px-2.5 py-2 text-sm transition-colors",
                   isActive
-                    ? "bg-accent text-text font-medium"
-                    : "text-text-list hover:bg-accent/50 hover:text-text",
+                    ? "bg-white/15 text-white font-medium"
+                    : "text-white/70 hover:bg-white/10 hover:text-white",
                 )}
               >
                 <Icon className="size-4 shrink-0" />
@@ -125,14 +125,14 @@ export function Sidenav() {
         </nav>
 
         {user && (
-          <div className="border-t border-border pt-3 px-1">
+          <div className="border-t border-white/15 pt-3 px-1">
             <div className="flex items-center gap-2 rounded-md px-2 py-1.5">
-              <div className="grid h-8 w-8 place-items-center rounded-full bg-accent text-accent-foreground text-xs font-semibold">
+              <div className="grid h-8 w-8 place-items-center rounded-full bg-white/15 text-white text-xs font-semibold">
                 {getInitials(user.nome)}
               </div>
               <div className="min-w-0 flex-1">
-                <p className="truncate text-xs font-medium text-text">{user.nome}</p>
-                <p className="text-[0.7rem] text-muted-foreground">
+                <p className="truncate text-xs font-medium text-white">{user.nome}</p>
+                <p className="text-[0.7rem] text-white/60">
                   {getNivelLabel(user.nivel)}
                 </p>
               </div>
@@ -142,7 +142,7 @@ export function Sidenav() {
                   setMobileOpen(false);
                   logout();
                 }}
-                className="rounded-md p-1.5 text-muted-foreground hover:text-destructive hover:bg-accent"
+                className="rounded-md p-1.5 text-white/70 hover:text-white hover:bg-white/10"
                 aria-label="Sair"
                 title="Sair"
               >

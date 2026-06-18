@@ -71,7 +71,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = useCallback(() => {
     clearStoredAuth();
     setUser(null);
-    router.replace("/login");
+    router.replace("/");
   }, [router]);
 
   const hasCapability = useCallback(
