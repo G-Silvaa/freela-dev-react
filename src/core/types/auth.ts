@@ -56,6 +56,18 @@ export interface PlanoApi {
   maxClientes: number | null;
 }
 
+export interface Cobranca {
+  id: number;
+  planoNome: string;
+  valor: number;
+  status: string;
+  statusLabel: string;
+  brCode: string | null;
+  brCodeBase64: string | null;
+  expiraEm: string | null;
+  pago: boolean;
+}
+
 export interface NivelUsuarioOption {
   value: NivelUsuario;
   label: string;

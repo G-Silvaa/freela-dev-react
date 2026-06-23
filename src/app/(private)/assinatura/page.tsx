@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { CalendarClock, CheckCircle2, Loader2, MessageCircle, TriangleAlert } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { CalendarClock, CheckCircle2, Loader2, MessageCircle, QrCode, TriangleAlert } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { assinaturaService } from "@/core/services/assinatura.service";
 import { whatsappLink } from "@/core/consts/landing";
 import type { Assinatura } from "@/core/types/auth";
+import { PagamentoPixDialog } from "./PagamentoPixDialog";
 
 function formatPreco(preco: number) {
   return preco.toLocaleString("pt-BR", {
@@ -25,14 +26,18 @@ function formatData(value: string | null) {
 export default function AssinaturaPage() {
   const [assinatura, setAssinatura] = useState<Assinatura | null>(null);
   const [loading, setLoading] = useState(true);
+  const [pixOpen, setPixOpen] = useState(false);
 
-  useEffect(() => {
-    assinaturaService
+  const carregar = useCallback(() => {
+    return assinaturaService
       .minha()
       .then(setAssinatura)
-      .catch(() => setAssinatura(null))
-      .finally(() => setLoading(false));
+      .catch(() => setAssinatura(null));
   }, []);
+
+  useEffect(() => {
+    carregar().finally(() => setLoading(false));
+  }, [carregar]);
 
   if (loading) {
     return (
@@ -113,21 +118,30 @@ export default function AssinaturaPage() {
         </div>
 
         <div className="mt-6 border-t border-border pt-5">
-          <Button asChild size="lg">
-            <a
-              href={whatsappLink(ctaMensagem)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MessageCircle className="size-4" />
-              {emTrial ? "Ativar assinatura" : "Regularizar pagamento"}
-            </a>
-          </Button>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Button size="lg" onClick={() => setPixOpen(true)}>
+              <QrCode className="size-4" />
+              Pagar com PIX
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <a
+                href={whatsappLink(ctaMensagem)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="size-4" />
+                Falar no WhatsApp
+              </a>
+            </Button>
+          </div>
           <p className="mt-2 text-xs text-muted-foreground">
-            Pagamento online automático em breve. Por enquanto, ativamos sua assinatura pelo WhatsApp.
+            {emTrial ? "Ative sua assinatura" : "Regularize seu pagamento"} na hora com PIX — confirmação
+            automática.
           </p>
         </div>
       </div>
+
+      <PagamentoPixDialog open={pixOpen} onOpenChange={setPixOpen} onPago={carregar} />
     </div>
   );
 }
